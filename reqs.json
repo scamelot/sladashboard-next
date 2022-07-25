@@ -1,0 +1,10 @@
+{"_id":{"$oid":"62b4bf1781de5eb54920f947"},"date":"2022-06-23T19:30:20.784Z","dateReadable":"6-23-2022","value":93}
+{"_id":{"$oid":"62b5b44181de5eb54921b165"},"dateReadable":"6-24-2022","date":"2022-06-24T13:37:22.377Z","value":89}
+{"_id":{"$oid":"62c84ebd81de5eb549533290"},"dateReadable":"7-8-2022","date":"2022-07-08T15:35:21.622Z","value":100}
+{"_id":{"$oid":"62c84f5481de5eb549535e73"},"dateReadable":"07-08-2022","date":"07-08-2022","value":100,"type":"req"}
+{"_id":{"$oid":"62c86e166638cc28ffe2623e"},"dateReadable":"07-07-2022","date":"07-07-2022","value":96.888,"type":"req"}
+{"_id":{"$oid":"62cc51f681de5eb5498fbe18"},"dateReadable":"07-11-2022","date":"07-11-2022","type":"req","value":100}
+{"_id":{"$oid":"62cd822e81de5eb549b70e5f"},"dateReadable":"07-12-2022","date":"07-12-2022","type":"req","value":100}
+{"_id":{"$oid":"62d180fabbc8df159d82a72a"},"dateReadable":"07-15-2022","date":"07-15-2022","type":"req","value":98.165}
+{"_id":{"$oid":"62dab3b5bbc8df159d8757a4"},"dateReadable":"07-22-2022","date":"07-22-2022","type":"req","value":98.788}
+{"_id":{"$oid":"62de8838bbc8df159d887c4b"},"dateReadable":"07-25-2022","date":"07-25-2022","type":"req","value":98.864}

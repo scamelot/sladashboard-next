@@ -71,7 +71,7 @@ export default function Update() {
 
   return (
     <div className="bg-black">
-    <Button variant="contained" onClick={handleClickOpen} style={{textTransform: 'none'}}>
+    <Button variant="contained" onClick={handleClickOpen} style={{textTransform: 'none', background:''}}>
       Update today's SLAs
     </Button>
 
@@ -80,7 +80,7 @@ export default function Update() {
     <DialogContent>
     <div className="bg-black text-white flex flex-row text-center">
       <main>
-        <h1 className="text-2xl font-bold underline p-10">
+        <h1 className="text-2xl font-bold p-10">
           Update SLAs for {`${todaysDate}`}
         </h1>
       <form onSubmit={handleSubmit}>

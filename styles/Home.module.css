@@ -1,10 +1,14 @@
 .container {
   padding: 0 2rem;
 }
-
+@font-face {
+  font-family: 'Starjedi';
+  src: url('./../public/SFDistantGalaxy.ttf') format('truetype');
+}
 .main {
   min-height: 100vh;
   padding: 4rem 0;
+  font-family: 'Starjedi';
   flex: 1;
   display: flex;
   flex-direction: column;
