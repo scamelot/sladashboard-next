@@ -58,8 +58,8 @@ export default function SLAField(props) {
         <a href="#" className={styles.card}>
         <h2 className="text-center font-bold text-5xl">{props.name}</h2>
         <input readOnly={true} type="text" id="INCs" className={`text-9xl rounded-lg text-center text-white h-5/6 m-5 ${fieldStyle}`} value={props.value}></input>
-        <h3 id='delta' className='text-center' >Change since {`${props.prev}`}: {`${delta}%`}</h3>
-        <h2 id='goal' className='text-center text-3xl mb-5' >{`${toGoal}`}% {`${goalLabel}`}</h2>
+        <h3 id='delta' className={'text-center text-4xl'} >Change since {`${props.prev}`}: {`${delta}%`}</h3>
+        <h2 id='goal' className='text-center text-6xl mb-5' >{`${toGoal}`}% {`${goalLabel}`}</h2>
         </a>
         )
 }
