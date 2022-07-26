@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 import Button from '@mui/material/Button'
 
 import dayjs from 'dayjs'
+import { compose } from '@mui/system'
 const customParseFormat = require('dayjs/plugin/customParseFormat')
 dayjs.extend(customParseFormat)
 
@@ -41,16 +42,26 @@ export default function Home({ data }) {
   Router.events.on('routeChangeComplete', () => {
     setUpdated(true)
   })
+
+  const getData = async () => {
+    const allIncs = await fetch('http://localhost:3000/api/inc')
+    let fetched = await allIncs.json()
+    setData(fetched)
+  }
   
   useEffect(()=>{
     if(router.isReady){
 
     const { updatedDate } = router.query
-  }}, [updated]
+  }
+}, [updated]
   );
 
 
   if (typeof window !== "undefined") {
+    const interval = setInterval(() => {
+      router.reload(window.location.pathname)
+    },60000)
     if (updated) {
       setTimeout(() => {
          let modalElement = document.querySelector(".modal")
