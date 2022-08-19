@@ -15,7 +15,7 @@ export default function SLAField(props) {
     //INCEXP, INCMIN = 94.850, 92.894
     // REQEXP, REQMIN = 97.160, 96.219
     const incValues = [92.894,94.850]
-    const reqValues = [96.129,97.160]
+    const reqValues = [96.219,97.160]
     let toGoal = 0
     let goalLabel = ''
 

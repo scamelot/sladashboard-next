@@ -59,9 +59,9 @@ export default function Home({ data }) {
 
 
   if (typeof window !== "undefined") {
-    const interval = setInterval(() => {
-      router.reload(window.location.pathname)
-    },60000)
+    // const interval = setInterval(() => {
+    //   router.reload(window.location.pathname)
+    // },60000)
     if (updated) {
       setTimeout(() => {
          let modalElement = document.querySelector(".modal")
@@ -110,9 +110,22 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-  const allIncs = await fetch('http://localhost:3000/api/inc')
-  const data = await allIncs.json()
-
-  return { props: { data }}
+  try {
+    const allIncs = await fetch('http://localhost:3000/api/inc')
+    const data = await allIncs.json()
+    console.table(data)
+    return { props: { data }}
+  }
+  catch (err) {
+    console.error(dayjs(), err)
+  }
+  finally {
+  // const data = []
+  // data[0] = todaysInc
+  // data[1] = yesterdaysInc
+  // data[2] = todaysReq
+  // data[3] = yesterdaysReq
+  //   return {props: { data }}
+  }
 
 }
