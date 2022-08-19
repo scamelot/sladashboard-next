@@ -51,7 +51,7 @@ export default async (req, res) => {
     .toArray()
 
     if (req.method == 'GET') {
-        res.json(incSlas, reqSlas, allIncSlas, allReqSlas);
+        res.json(slas);
     }
 
     else if (req.method == 'POST') {

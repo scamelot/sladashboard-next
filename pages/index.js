@@ -113,7 +113,6 @@ export default function Home({ data }) {
 export async function getServerSideProps() {
   try {
     const allIncs = await fetch('http://localhost:3000/api/inc')
-    const data = await allIncs.json()
     console.table(data)
     return { props: { data }}
   }
