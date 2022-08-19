@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react'
 import { Router } from 'next/dist/client/router'
 import { useRouter } from 'next/router'
 import Button from '@mui/material/Button'
+import { Line } from 'react-chartjs-2'
 
 import dayjs from 'dayjs'
 import { compose } from '@mui/system'

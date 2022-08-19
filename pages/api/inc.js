@@ -41,6 +41,14 @@ export default async (req, res) => {
     .sort({_id: -1})
     .toArray();
   const slas = incSlas.concat(reqSlas)
+  const allIncSlas = await db
+    .collection("inc")
+    .find({})
+    .toArray()
+  const allReqSlas = await db
+    .collection("req")
+    .find({})
+    .toArray()
 
     if (req.method == 'GET') {
         res.json(slas);
