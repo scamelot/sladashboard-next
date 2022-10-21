@@ -51,7 +51,14 @@ export default function IncChart(props) {
             }]
         }
 
-    const options = {}
+    const options = {
+        scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }}
     return (
         <div style={{width: '50vw', height: 300}}>
         <Line data={data} width={'100px'} height={'100px'} options={options} />
