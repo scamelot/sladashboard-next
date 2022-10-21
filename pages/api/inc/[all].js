@@ -14,22 +14,16 @@ export default async function handler(req,res) {
 
    const allIncSlas = await db
     .collection("inc")
-    .find({"date": 
-    {
-        $gte: new Date((new Date().getTime() - (30 * 24 * 60 * 60 * 1000)))
-    }})
+    .find({})
     .toArray()
   const allReqSlas = await db
     .collection("req")
-    .find({"date": 
-    {
-        $gte: new Date((new Date().getTime() - (30 * 24 * 60 * 60 * 1000)))
-    }})
+    .find({})
     .toArray()
 
    const data = {
-    inc: [...allIncSlas],
-    req: [...allReqSlas]
+    inc: [...allIncSlas.slice(Math.max(allIncSlas.length - 30, 0))],
+    req: [...allReqSlas.slice(Math.max(allReqSlas.length - 30, 0))]
    }
 
    res.end(JSON.stringify(data))
