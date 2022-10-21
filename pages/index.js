@@ -8,7 +8,7 @@ import React, { useState, useEffect } from 'react'
 import { Router } from 'next/dist/client/router'
 import { useRouter } from 'next/router'
 import Button from '@mui/material/Button'
-import { Line } from 'react-chartjs-2'
+import IncChart from './charts'
 
 import dayjs from 'dayjs'
 import { compose } from '@mui/system'
@@ -26,7 +26,7 @@ let yesterdaysInc = 0
 let todaysReq = 0
 let yesterdaysReq = 0
 
-export default function Home({ data }) {
+export default function Home({ data, allData }) {
   const router = useRouter()
 
   const [updated, setUpdated] = React.useState(false)
@@ -77,15 +77,6 @@ export default function Home({ data }) {
   todaysReq = data[2]
   yesterdaysReq = data[3]
 
-  //if no update yet set to last set data...is this necessary since we grab last two db entries?
-  // if (!todaysInc) {
-  //   todaysInc = yesterdaysInc
-  // }
-
-  // if (!todaysReq) {
-  //   todaysReq = yesterdaysReq
-  // }
-
   return (
     <div className={styles.container}>
       <Head>
@@ -105,6 +96,7 @@ export default function Home({ data }) {
         </div>
         <div className="h-2/4"></div>
         <Update />
+        <IncChart data={allData} />
       </main>
     </div>
   )
@@ -112,10 +104,13 @@ export default function Home({ data }) {
 
 export async function getServerSideProps() {
   try {
-    const allIncs = await fetch('http://localhost:3000/api/inc')
-    const data = await allIncs.json()
+    const current = await fetch('http://localhost:3000/api/inc')
+    const data = await current.json()
+    const all = await fetch('http://localhost:3000/api/inc/all')
+    const allData = await all.json()
+
     console.table(data)
-    return { props: { data }}
+    return { props: {data, allData }}
   }
   catch (err) {
     console.error(dayjs(), err)
