@@ -53,13 +53,22 @@ export default function SLAField(props) {
 
     const fieldStyle = changeValue()
     const delta = (Number(props.value.replace('%','')) - Number(props.prevValue.replace('%',''))).toFixed(3)
+    
+    const aboveReqFailure = Number(props.value.replace('%','')) - reqValues[0]
+    const aboveIncFailure = Number(props.value.replace('%','')) - incValues[0]
+    let failure = 0
+    if (props.name.includes('INCs')) {
+        failure = aboveIncFailure.toFixed(3)
+    } else { failure = aboveReqFailure.toFixed(3) }
+
     console.table(props)
     return (
         <a href="#" className={styles.card}>
         <h2 className="text-center font-bold text-5xl">{props.name}</h2>
         <input readOnly={true} type="text" id="INCs" className={`text-9xl rounded-lg text-center text-white h-5/6 m-5 ${fieldStyle}`} value={props.value}></input>
         <h3 id='delta' className={'text-center text-4xl'} >Change since {`${props.prev}`}: {`${delta}%`}</h3>
-        <h2 id='goal' className='text-center text-6xl mb-5' >{`${toGoal}`}% {`${goalLabel}`}</h2>
+        <h2 id='goal' className='text-center text-6xl' >{`${toGoal}`}% {`${goalLabel}`}</h2>
+        <h2 id='failure' className='text-center text-4xl mb-5' > {`${failure}% above minimum`}</h2>
         </a>
         )
 }
