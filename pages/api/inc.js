@@ -10,7 +10,7 @@ dayjs.extend(customParseFormat)
 const today = dayjs().format('MM-DD-YYYY')
 const yesterday = dayjs().subtract(1, 'day').format('MM-DD-YYYY')
 
-const MONGODB_URI = "mongodb://localhost:27017"
+const MONGODB_URI = process.env.DB_STRING
 const MONGODB_DB = "sladashboard"
 
 const opts = {

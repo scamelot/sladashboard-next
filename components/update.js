@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import dayjs from 'dayjs'
 import React, { useState } from 'react'
 import { useRouter } from "next/router";
@@ -72,7 +71,7 @@ export default function Update() {
   return (
     <div className="bg-black">
     <Button variant="contained" onClick={handleClickOpen} style={{textTransform: 'none', background:''}}>
-      Update today's SLAs
+      Update SLAs
     </Button>
 
     <Dialog open={open} onClose={handleClose} PaperProps={{style: {backgroundColor: 'black', border: 'solid 1px gray'}}}>
