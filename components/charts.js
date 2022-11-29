@@ -172,10 +172,21 @@ export default function IncChart(props) {
     }  
 }
 
+const style={
+    display: 'flex', 
+    justifyContent: 'between',
+    flexDirection:'column', 
+    zIndex:'0',
+    marginTop: '4rem',
+    left: '100px', 
+    bottom:'100px', 
+    width: '45vw', 
+    height: 500}
+
     return (
-        <div style={{display: 'flex', marginLeft:'-45vw', justifyContent: 'between',flexDirection:'row',zIndex:'0', left: '100px', bottom:'100px', width: '45vw', height: 400}}>
-        <Line data={data} width={'100px'} height={'100px'} options={options} />
-        <Line data={reqChartData} options={reqOptions} />
+        <div style={style}>
+        <Line data={data} width={'100px'} height={'100px'} options={options} style={{margin: '0 0 2em 0'}} />
+        <Line data={reqChartData} options={reqOptions} style={{margin: '2em 0 0 0'}}/>
         </div>
     )
 }

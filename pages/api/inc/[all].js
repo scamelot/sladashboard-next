@@ -1,5 +1,3 @@
-const MONGODB_URI = "mongodb://localhost:27017"
-const MONGODB_DB = "sladashboard"
 import { connectToDatabase } from "../inc"
 
 const opts = {

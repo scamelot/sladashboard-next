@@ -69,7 +69,7 @@ export default function Update() {
   };
 
   return (
-    <div className="bg-black">
+    <div className="bg-black flex flex-row items-end">
     <Button variant="contained" onClick={handleClickOpen} style={{textTransform: 'none', background:''}}>
       Update SLAs
     </Button>

@@ -4,9 +4,9 @@ import styles from '../styles/Home.module.css'
 import SLAField from '../components/SLAField.js'
 import Modal from '../components/modal.js'
 import Update from '../components/update.js'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Router } from 'next/dist/client/router'
-import { useRouter } from 'next/router'
+
 import IncChart from '../components/charts'
 
 import dayjs from 'dayjs'
@@ -28,18 +28,8 @@ let todaysReq = 0
 let yesterdaysReq = 0
 
 export default function Home({ data, allData }) {
-  const router = useRouter()
 
   const [updated, setUpdated] = React.useState(false)
-  const [open, setOpen] = React.useState(false)
-
-  const handleClickOpen = () => {
-    setOpen(true)
-  };
-
-  const handleClose = () => {
-    setOpen(false)
-  };
 
   Router.events.on('routeChangeComplete', () => {
     setUpdated(true)
@@ -81,17 +71,14 @@ export default function Home({ data, allData }) {
 
       <main className={styles.main}>
       {updated ? <Modal /> : console.log('No update') }
-        <h1 className="text-6xl font-bold p-10">
-          SLAs
-        </h1>
 
-        <div className="flex flex-wrap max-w-auto">
+        <div className="flex flex-wrap max-w-3xl mt-6 ">
           <SLAField name="INCs" value={`${todaysInc.value}%`} prev={`${yesterdaysInc.date}`} prevValue={`${yesterdaysInc.value}`}/>
           <SLAField name="REQs" value={`${todaysReq.value}%`} prev={`${yesterdaysReq.date}`} prevValue={`${yesterdaysReq.value}`}/>
         </div>
-        <div className="h-2/4"></div>
-        <Update />
+        
         <IncChart data={allData} />
+        <Update />
       </main>
     </div>
   )
@@ -104,7 +91,7 @@ export async function getServerSideProps() {
     const all = await fetch(`${server}/api/inc/all`)
     const allData = await all.json()
 
-    console.table(data)
+    // console.table(data)
     return { props: { data, allData }}
   }
 
