@@ -30,7 +30,7 @@ export default async function handler (req, res) {
 
     if (req.method == 'POST') {
         db.collection(req.body.type).updateOne(
-            {dateReadable: req.body.dateReadable},
+            {dateReadable: today},
             { $set: {
                 date: today,
                 type: req.body.type,
