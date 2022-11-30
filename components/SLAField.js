@@ -61,7 +61,6 @@ export default function SLAField(props) {
         failure = aboveIncFailure.toFixed(3)
     } else { failure = aboveReqFailure.toFixed(3) }
 
-    console.table(props)
     return (
         <a href="#" className={styles.card}>
         <h2 className="text-center font-bold text-5xl">{props.name}</h2>

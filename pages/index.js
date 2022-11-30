@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import SLAField from '../components/SLAField.js'
 import Modal from '../components/modal.js'
@@ -15,12 +14,6 @@ dayjs.extend(customParseFormat)
 
 const server = process.env.SERVER
 
-const dateFormat = 'MM-DD-YYYY'
-const today = dayjs().format(dateFormat)
-console.log(today)
-const yesterday = dayjs().subtract(1, 'day').format(dateFormat)
-const lastWeek = dayjs().subtract(1, 'week').format(dateFormat)
-console.log(lastWeek)
 
 let todaysInc = 0
 let yesterdaysInc = 0
@@ -35,19 +28,8 @@ export default function Home({ data, allData }) {
     setUpdated(true)
   })
   
-//   useEffect(()=>{
-//     if(router.isReady){
-
-//     const { updatedDate } = router.query
-//   }
-// }, [updated]
-//   );
-
 
   if (typeof window !== "undefined") {
-    // const interval = setInterval(() => {
-    //   router.reload(window.location.pathname)
-    // },60000)
     if (updated) {
       setTimeout(() => {
          let modalElement = document.querySelector(".modal")
@@ -91,7 +73,6 @@ export async function getServerSideProps() {
     const all = await fetch(`${server}/api/inc/all`)
     const allData = await all.json()
 
-    // console.table(data)
     return { props: { data, allData }}
   }
 
