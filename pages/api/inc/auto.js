@@ -29,13 +29,14 @@ export default async function handler (req, res) {
 
 
     if (req.method == 'POST') {
+        const realValue = Number(req.body.inc.split('%')[0])
         db.collection(req.body.type).updateOne(
             {dateReadable: today},
             { $set: {
                 date: today,
                 type: req.body.type,
                 dateReadable: today,
-                value: Number(req.body.inc.replace('%','')),
+                value: realValue,
             }},
             {
                 upsert: true
