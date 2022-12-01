@@ -1,18 +1,17 @@
 import styles from '../styles/Home.module.css'
+import {incLimits, reqLimits} from '../config/limits'
+import {colors} from '../config/colors'
 
 export default function SLAField(props) {
 
-    const GOOD = 'bg-green-700'
-    const OKAY = 'bg-yellow-500'
-    const BAD = 'bg-red-600'
     const goalText = {
         low: " to goal",
         high: " above goal"
     }
-    //INCEXP, INCMIN = 94.850, 92.894
-    // REQEXP, REQMIN = 97.160, 96.219
-    const incValues = [92.894,94.850]
-    const reqValues = [96.219,97.160]
+    console.log(incLimits)
+    console.log(colors)
+    const incValues = incLimits
+    const reqValues = reqLimits
     let toGoal = 0
     let goalLabel = ''
 
@@ -33,22 +32,23 @@ export default function SLAField(props) {
 
         if (value < values[0]) {
             goalLabel = goalText.low
-            return BAD
+            return colors.BAD
 
         }
         else if (value >= values[0] &&  value < values[1]) {
             goalLabel = goalText.low
-            return OKAY
+            return colors.OKAY
 
         }
         else {
             goalLabel = goalText.high
-            return GOOD
+            return colors.GOOD
 
         }    
     }
 
     const fieldStyle = changeValue()
+    console.log(fieldStyle)
     const delta = (Number(props.value.replace('%','')) - Number(props.prevValue.replace('%',''))).toFixed(3)
     
     const aboveReqFailure = Number(props.value.replace('%','')) - reqValues[0]
@@ -58,13 +58,25 @@ export default function SLAField(props) {
         failure = aboveIncFailure.toFixed(3)
     } else { failure = aboveReqFailure.toFixed(3) }
 
+    //Delta color highlighting
+    let deltaColor = ''
+    if (delta > 0) {
+        deltaColor = 'text-green-500'
+    }
+    else if (delta < 0) {
+        deltaColor = 'text-red-500'
+    }
+    else {
+        deltaColor = 'text-white'
+    }
+
     return (
         <a href="#" className={styles.card}>
-        <h2 className="text-center font-bold text-5xl">{props.name}</h2>
-        <input readOnly={true} type="text" id="INCs" className={`text-8xl rounded-lg text-center text-white w-3/4 h-5/6 m-5 ${fieldStyle}`} value={props.value}></input>
-        <h3 id='delta' className={'text-center text-4xl'} >Change since {`${props.prev}`}: {`${delta}%`}</h3>
-        <h2 id='goal' className='text-center text-6xl' >{`${toGoal}`}% {`${goalLabel}`}</h2>
-        <h2 id='failure' className='text-center text-4xl mb-5' > {`${failure}% above minimum`}</h2>
+        <h2 className="text-center lg:text-5xl sm:text-lg">{props.name}</h2>
+        <input readOnly={true} type="text" id="INCs" className={`lg:text-8xl sm:text-6xl rounded-lg text-center text-white w-3/4 h-5/6 m-5 ${fieldStyle}`} value={props.value}></input>
+        <h3 id='delta' className={`text-center lg:text-4xl sm:text-md ${deltaColor}`}>Change since {`${props.prev}`}: {`${delta}%`}</h3>
+        <h2 id='goal' className='text-center lg:text-6xl sm:text-lg'>{`${toGoal}`}% {`${goalLabel}`}</h2>
+        <h2 id='failure' className='text-center lg:text-4xl sm:text-sm mb-5' > {`${failure}% above minimum`}</h2>
         </a>
         )
 }

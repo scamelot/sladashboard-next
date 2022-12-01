@@ -6,9 +6,8 @@ import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement,
 ChartJS.register(ArcElement, Annotation, Tooltip, Filler, Legend, CategoryScale, LinearScale, PointElement, LineElement);
 
 
-export default function IncChart(props) {
+export default function SLAChart(props) {
     const allData = props.data
-    console.log(allData)
 
     let incData = []
     let incLabels = []
@@ -174,19 +173,19 @@ export default function IncChart(props) {
 
 const style={
     display: 'flex', 
-    justifyContent: 'between',
+    justifyContent: 'center',
     flexDirection:'column', 
     zIndex:'0',
-    marginTop: '4rem',
+    marginTop: '2rem',
     left: '100px', 
     bottom:'100px', 
-    width: '45vw', 
-    height: 500}
+    width: '50vw', 
+    height: '40vh'}
 
     return (
         <div style={style}>
-        <Line data={data} width={'100px'} height={'100px'} options={options} style={{margin: '0 0 2em 0'}} />
-        <Line data={reqChartData} options={reqOptions} style={{margin: '2em 0 0 0'}}/>
+        {props.name=='INCs' && <Line data={data} options={options} /> }
+        {props.name=='REQs' && <Line data={reqChartData} options={reqOptions}/> }
         </div>
     )
 }
