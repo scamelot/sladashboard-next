@@ -12,16 +12,21 @@ export default function SLAChart(props) {
     let incData = []
     let incLabels = []
     allData.inc.forEach(datum => {
-        incLabels.push(datum.date.replace('-2022',''))
+        incLabels.push(datum.date.split('-').slice(0,2).join('-'))
         incData.push(datum.value)
     })
+    let incDataLowest = [...incData].sort((a,b) => a-b)[0] 
+    incDataLowest = incDataLowest < 90 ? incDataLowest : 90
 
     let reqData = []
     let reqLabels = []
     allData.req.forEach(datum => {
-        reqLabels.push(datum.date.replace('-2022', ''))
+        reqLabels.push(datum.date.split('-').slice(0,2).join('-'))
         reqData.push(datum.value)
     })
+    let reqDataLowest = [...reqData].sort((a,b) => a-b)[0]
+    reqDataLowest = reqDataLowest < 95 ? reqDataLowest : 95
+
 
     const reqChartData = {
             labels: reqLabels,
@@ -70,7 +75,7 @@ export default function SLAChart(props) {
                 grid: {
                     color: 'rgba(100,100,100,0.4)'
                 },
-                min: 95,
+                min: reqDataLowest,
             },
         },
         maintainAspectRatio: false,
@@ -124,7 +129,7 @@ export default function SLAChart(props) {
                     grid: {
                         color: 'rgba(100,100,100,0.4)'
                     },
-                    min: 90,
+                    min: incDataLowest,
                 },
             },
     maintainAspectRatio: false,
@@ -180,7 +185,7 @@ const style={
     left: '100px', 
     bottom:'100px', 
     width: '50vw', 
-    height: '40vh'}
+    height: '45vh'}
 
     return (
         <div style={style}>

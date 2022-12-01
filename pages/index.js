@@ -57,7 +57,6 @@ export default function Home({ data, allData }) {
 
         <div className="flex flex-wrap mt-2">
           <SLACard name='INCs' current={todaysInc} prev={yesterdaysInc} data={allData}/>
-          {/* <SLAField name="INCs" value={`${todaysInc.value}%`} prev={`${yesterdaysInc.date}`} prevValue={`${yesterdaysInc.value}`}/> */}
           <SLACard name='REQs' current={todaysReq} prev={yesterdaysReq} data={allData}/>
         </div>
     </div>
