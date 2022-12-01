@@ -1,14 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import dayjs from 'dayjs'
-import React, { useState } from 'react'
+import React from 'react'
 import { useRouter } from "next/router";
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
@@ -49,9 +45,8 @@ export default function Update() {
     }
 
     const response = await fetch(endpoint, options)
-
+    console.log(response)
     // Get the response data from server as JSON.
-    const result = await response.json()
     router.push({
     pathname: `/`,
     query: {updated: todaysDate }
@@ -69,7 +64,7 @@ export default function Update() {
   };
 
   return (
-    <div className="bg-black">
+    <div className="bg-black flex flex-row items-end mb-10">
     <Button variant="contained" onClick={handleClickOpen} style={{textTransform: 'none', background:''}}>
       Update SLAs
     </Button>
@@ -92,8 +87,6 @@ export default function Update() {
           <h3 className='text-center'>REQ</h3>
           <input id="req" className="m-10 h-20 text-black text-center"></input>
           </div>
-          {/* <SLAField name="INC" />
-          <SLAField name="REQ" /> */}
         </div>
         <div className="flex flex-wrap max-w-auto">
         <button id="submit" type="submit" onClick={handleClose} className="border-2 px-8 py-4 rounded-md hover:bg-blue-800 bg-blue-600 mx-auto">Update</button>

@@ -1,6 +1,3 @@
-import { loadGetInitialProps } from 'next/dist/shared/lib/utils'
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 export default function SLAField(props) {
@@ -61,11 +58,10 @@ export default function SLAField(props) {
         failure = aboveIncFailure.toFixed(3)
     } else { failure = aboveReqFailure.toFixed(3) }
 
-    console.table(props)
     return (
         <a href="#" className={styles.card}>
         <h2 className="text-center font-bold text-5xl">{props.name}</h2>
-        <input readOnly={true} type="text" id="INCs" className={`text-9xl rounded-lg text-center text-white h-5/6 m-5 ${fieldStyle}`} value={props.value}></input>
+        <input readOnly={true} type="text" id="INCs" className={`text-8xl rounded-lg text-center text-white w-3/4 h-5/6 m-5 ${fieldStyle}`} value={props.value}></input>
         <h3 id='delta' className={'text-center text-4xl'} >Change since {`${props.prev}`}: {`${delta}%`}</h3>
         <h2 id='goal' className='text-center text-6xl' >{`${toGoal}`}% {`${goalLabel}`}</h2>
         <h2 id='failure' className='text-center text-4xl mb-5' > {`${failure}% above minimum`}</h2>

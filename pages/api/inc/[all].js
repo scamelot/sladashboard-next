@@ -1,14 +1,6 @@
-const MONGODB_URI = "mongodb://localhost:27017"
-const MONGODB_DB = "sladashboard"
 import { connectToDatabase } from "../inc"
 
-const opts = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}
-
 export default async function handler(req,res) {
-    const { posts } = req.query
 
     const db = await connectToDatabase();
 
