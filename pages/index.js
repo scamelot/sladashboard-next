@@ -9,6 +9,7 @@ import { Router } from 'next/dist/client/router'
 import IncChart from '../components/charts'
 
 import dayjs from 'dayjs'
+import SLACard from '../components/SLACard'
 const customParseFormat = require('dayjs/plugin/customParseFormat')
 dayjs.extend(customParseFormat)
 
@@ -45,23 +46,19 @@ export default function Home({ data, allData }) {
   yesterdaysReq = data[3]
 
   return (
-    <div className={styles.container}>
+<div className={styles.main}>
       <Head>
         <title>SLA Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <main className={styles.main}>
       {updated ? <Modal /> : console.log('No update') }
 
-        <div className="flex flex-wrap max-w-3xl mt-6 ">
-          <SLAField name="INCs" value={`${todaysInc.value}%`} prev={`${yesterdaysInc.date}`} prevValue={`${yesterdaysInc.value}`}/>
-          <SLAField name="REQs" value={`${todaysReq.value}%`} prev={`${yesterdaysReq.date}`} prevValue={`${yesterdaysReq.value}`}/>
+        <div className="flex flex-wrap mt-2">
+          <SLACard name='INCs' current={todaysInc} prev={yesterdaysInc} data={allData}/>
+          <SLACard name='REQs' current={todaysReq} prev={yesterdaysReq} data={allData}/>
         </div>
-        
-        <IncChart data={allData} />
-        <Update />
-      </main>
     </div>
   )
 }
@@ -78,7 +75,6 @@ export async function getServerSideProps() {
 
   catch (err) {
     console.error(dayjs(), err)
-    Router.reload(window.location.pathname)
   }
 
   finally {
