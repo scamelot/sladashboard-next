@@ -185,7 +185,7 @@ const style={
     marginTop: '2rem',
     left: '100px', 
     bottom:'100px', 
-    width: '50vw', 
+    width: '45vw', 
     height: '45vh'}
 
     return (
