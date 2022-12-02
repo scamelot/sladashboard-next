@@ -2,6 +2,7 @@
 import Annotation from 'chartjs-plugin-annotation';
 // Global
 import { Line } from 'react-chartjs-2'
+import styles from '../styles/Home.module.css'
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip, Legend, ScriptableContext, } from "chart.js";
 ChartJS.register(ArcElement, Annotation, Tooltip, Filler, Legend, CategoryScale, LinearScale, PointElement, LineElement);
 
@@ -184,11 +185,11 @@ const style={
     marginTop: '2rem',
     left: '100px', 
     bottom:'100px', 
-    width: '50vw', 
+    width: '45vw', 
     height: '45vh'}
 
     return (
-        <div style={style}>
+        <div className={styles.chart}>
         {props.name=='INCs' && <Line data={data} options={options} /> }
         {props.name=='REQs' && <Line data={reqChartData} options={reqOptions}/> }
         </div>

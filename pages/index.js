@@ -55,7 +55,7 @@ export default function Home({ data, allData }) {
 
       {updated ? <Modal /> : console.log('No update') }
 
-        <div className="flex flex-wrap mt-2">
+        <div className="flex flex-col mt-2">
           <SLACard name='INCs' current={todaysInc} prev={yesterdaysInc} data={allData}/>
           <SLACard name='REQs' current={todaysReq} prev={yesterdaysReq} data={allData}/>
         </div>
