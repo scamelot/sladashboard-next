@@ -82,7 +82,7 @@
   border: 0px solid #eaeaea;
   border-radius: 20px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 45vw;
+  max-width: 50vw;
   height: 50vh;
 }
 
@@ -103,6 +103,17 @@
   font-size: 1.25rem;
   line-height: 1.5;
 }
+.chart {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 0;
+  margin-top: 2rem;
+  left: 100px;
+  bottom: 100px;
+  width: 50vw;
+  height: 45vh;
+}
 
 .logo {
   height: 1em;
@@ -114,4 +125,22 @@
     width: 100%;
     flex-direction: column;
   }
+}
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+    flex-direction: column;
+    margin-top: 1em;
+    height: 30vh;
+  }
+  .card input {
+    height: 10vh;
+    font-size: 2em;
+    padding: .5em;
+  }
+  .chart {
+    width: 90vw;
+    margin-left: 1em;
+    marign-right: 1em;
+    }
 }
