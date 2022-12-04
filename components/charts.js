@@ -177,17 +177,6 @@ export default function SLAChart(props) {
     }  
 }
 
-const style={
-    display: 'flex', 
-    justifyContent: 'center',
-    flexDirection:'column', 
-    zIndex:'0',
-    marginTop: '2rem',
-    left: '100px', 
-    bottom:'100px', 
-    width: '45vw', 
-    height: '45vh'}
-
     return (
         <div className={styles.chart}>
         {props.name=='INCs' && <Line data={data} options={options} /> }
