@@ -1,4 +1,5 @@
 import { useUser } from "@auth0/nextjs-auth0/client"
+import Link from "next/link";
 
 export default function Nav() {
 
@@ -7,15 +8,16 @@ export default function Nav() {
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>{error.message}</div>;
 
+    console.log(user)
     return (
         <div>
         {user ?
         <div>
-            <a className={btnStyle} href="/api/auth/logout">Logout</a>
+            <Link className={btnStyle} href="/api/auth/logout">Logout</Link>
         </div>
         :
         <div>
-            <a className={btnStyle} href="/api/auth/login">Login</a>
+            <Link className={btnStyle} href="/api/auth/login">Login</Link>
         </div>
         }
         </div>
