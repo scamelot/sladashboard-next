@@ -1,5 +1,6 @@
 import { useUser } from "@auth0/nextjs-auth0/client"
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Nav() {
 
@@ -11,6 +12,11 @@ export default function Nav() {
     console.log(user)
     return (
         <div>
+            <Head>
+                <title>SLA Dashboard</title>
+                <link rel="icon" href="/favicon.ico" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+            </Head>
         {user ?
         <div>
             <Link className={btnStyle} href="/api/auth/logout">Logout</Link>
