@@ -1,16 +1,10 @@
 import { MongoClient } from "mongodb";
+import clientPromise from "../lib/mongodb";
 
-const MONGODB_URI = process.env.DB_STRING
-const MONGODB_DB = "sladashboard"
-
-const opts = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}
+const MONGODB_DB = 'sladashboard'
 
 export default async function connectToDatabase() {
-  const client = new MongoClient(MONGODB_URI, opts)
-  await client.connect()
+  const client = await clientPromise
   let db = client.db(MONGODB_DB)
   return db
 }
