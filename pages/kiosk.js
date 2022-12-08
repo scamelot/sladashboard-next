@@ -25,6 +25,10 @@ export default function Kiosk({correctKey}) {
             }
         }
     }
+    let bgStyle = ''
+    if (correctUI) {
+        bgStyle = 'bg-green-500 text-white'
+    }
 
     return(
             <div className={styles.main}>
@@ -32,7 +36,7 @@ export default function Kiosk({correctKey}) {
                 <h2 className='text-4xl text-green-500'>Kiosk Mode</h2>
                 <label htmlFor="kioskKey">Kiosk Key:</label>
                 </div>
-                <input type="text" name="kioskKey" placeholder="32-bit key here" className='text-black' onChange={handleChange}></input>
+                <input type="text" name="kioskKey" placeholder="32-bit key here" className={`text-black w-2/6 ` + bgStyle} onChange={handleChange}></input>
                 
                 <div className='my-5'><Link href="/"><span className='text-2xl bg-indigo-300 p-3 rounded-md hover:bg-indigo-600'>Go Back</span></Link></div>
             </div>

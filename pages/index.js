@@ -30,7 +30,7 @@ export default function Home({ data, allData, allUsers }) {
   //check for kiosk key
   useEffect(() => {
     if (user) {
-      setAccess(allUsers.filter(x => x.user_id == user.sub)[0].access)
+      setAccess(allUsers.filter(x => x.user_id == user.sub)[0].access || false)
     }
   if (typeof window !== 'undefined') {
     const savedKey = window.localStorage.getItem('kioskKey')
