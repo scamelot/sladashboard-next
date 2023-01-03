@@ -14,7 +14,7 @@ export default async function handler (req, res) {
 
     if (req.method == 'POST') {
         let realValue = 100
-        if (!isNaN(req.body.inc)) {
+        if (req.body.inc) {
             realValue = Number(req.body.inc.split('%')[0])
         }
         db.collection(req.body.type).updateOne(
@@ -23,7 +23,7 @@ export default async function handler (req, res) {
                 date: today,
                 type: req.body.type,
                 dateReadable: today,
-                value: realValue ? realValue : 100,
+                value: isNaN(realValue) ? realValue : 100,
             }},
             {
                 upsert: true
