@@ -23,7 +23,7 @@ export default async function handler (req, res) {
                 date: today,
                 type: req.body.type,
                 dateReadable: today,
-                value: isNaN(realValue) ? realValue : 100,
+                value: isNaN(realValue) ? 100 : realValue,
             }},
             {
                 upsert: true
