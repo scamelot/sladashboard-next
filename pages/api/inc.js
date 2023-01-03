@@ -41,7 +41,7 @@ export default async function handler (req, res) {
                 date: req.body.date,
                 type: "inc",
                 dateReadable: req.body.dateReadable,
-                value: req.body.inc,
+                value: req.body.inc ? req.body.inc : 100,
             }},
             {
                 upsert: true
@@ -53,7 +53,7 @@ export default async function handler (req, res) {
                 date: req.body.date,
                 type: "req",
                 dateReadable: req.body.dateReadable,
-                value: req.body.req,
+                value: req.body.req ? req.body.req : 100,
             }},
             {
                 upsert: true

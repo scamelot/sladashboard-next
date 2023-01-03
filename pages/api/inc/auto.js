@@ -13,14 +13,17 @@ export default async function handler (req, res) {
 
 
     if (req.method == 'POST') {
-        const realValue = Number(req.body.inc.split('%')[0])
+        let realValue = 100
+        if (req.body.inc) {
+            realValue = Number(req.body.inc.split('%')[0])
+        }
         db.collection(req.body.type).updateOne(
             {dateReadable: today},
             { $set: {
                 date: today,
                 type: req.body.type,
                 dateReadable: today,
-                value: realValue,
+                value: isNaN(realValue) ? 100 : realValue,
             }},
             {
                 upsert: true
