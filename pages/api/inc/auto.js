@@ -14,7 +14,7 @@ export default async function handler (req, res) {
 
     if (req.method == 'POST') {
         let realValue = 100
-        if (req.body.inc) {
+        if (!isNaN(req.body.inc)) {
             realValue = Number(req.body.inc.split('%')[0])
         }
         db.collection(req.body.type).updateOne(
